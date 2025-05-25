@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pointer Intelligence</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        img {
+            width: 898px;
+            max-width: 90%;
+            height: auto;
+        }
+        h1 {
+            margin-top: 40px;
+            font-size: 2em;
+        }
+        form {
+            margin-top: 30px;
+        }
+        input[type="email"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            max-width: 90%;
+            border: none;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #thankyou {
+            display: none;
+            margin-top: 20px;
+        }
+        footer {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <img src="pointer-labs-logo.jpg" alt="Pointer Logo">
+    <h1>Context is King</h1>
+    <form id="pointerForm" action="https://formspree.io/f/mnqedovz" method="POST">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Learn More</button>
+    </form>
+    <div id="thankyou">Thank you. We will be in touch shortly.</div>
+    <footer>
+        PointerIntelligence.AI © 2025 &nbsp;|&nbsp; We’ll only use your email to share occasional updates from Pointer.
+    </footer>
+
+    <script>
+        document.getElementById('pointerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById('pointerForm').style.display = 'none';
+                    document.getElementById('thankyou').style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
